@@ -3,6 +3,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "StockBuySell",
+      "request": "launch",
+      "mainClass": "StockBuySell",
+      "projectName": "CODING_b3e73ace"
+    },
+    {
+      "type": "java",
+      "name": "StringToIntegerAtoi",
+      "request": "launch",
+      "mainClass": "StringToIntegerAtoi",
+      "projectName": "CODING_b3e73ace"
+    },
+    {
+      "type": "java",
+      "name": "StaircaseWays",
+      "request": "launch",
+      "mainClass": "StaircaseWays",
+      "projectName": "CODING_b3e73ace"
+    },
+    {
+      "type": "java",
       "name": "CircularQueue",
       "request": "launch",
       "mainClass": "CircularQueue",

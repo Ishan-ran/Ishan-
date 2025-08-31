@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday, Shivu! 🎂</title>
+  <meta name="description" content="A tiny website from Ishan to Shivu — happy birthday!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020; /* deep night */
+      --card:#111735; /* card surface */
+      --accent:#ff6ec7; /* pink */
+      --accent-2:#7cf6ff; /* cyan */
+      --text:#e7ecff;
+      --muted:#9aa6ff;
+      --gold:#ffd166;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, #1b2350 0%, transparent 60%),
+        radial-gradient(1000px 500px at -10% 10%, #1a1537 10%, transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+    a{color:var(--accent)}
+
+    /* Layout */
+    .container{width:min(1100px,95%);margin:0 auto}
+    .center{display:flex;align-items:center;justify-content:center}
+
+    header{
+      min-height:92vh;
+      position:relative;
+      padding:80px 0 40px;
+      text-align:center;
+      overflow:hidden;
+    }
+    header h1{
+      font-family:Sacramento,cursive;
+      font-size: clamp(52px, 8vw, 110px);
+      line-height:1.05;
+      margin:0 0 10px;
+      color:white;
+      text-shadow:0 10px 30px rgba(0,0,0,.4);
+    }
+    header p.tag{
+      margin:0 auto 28px;
+      color:var(--muted);
+      font-weight:400;
+      letter-spacing:.5px;
+      max-width:720px;
+    }
+
+    /* Floating balloons */
+    .balloon{position:absolute; bottom:-140px; width:70px; height:90px; border-radius:48% 48% 48% 48% / 60% 60% 40% 40%;
+      box-shadow: inset -8px -10px 20px rgba(0,0,0,.15), 0 12px 30px rgba(0,0,0,.25);
+      animation: floatUp linear infinite;
+    }
+    .balloon:after{content:""; position:absolute; left:50%; top:88px; width:2px; height:120px; background:rgba(255,255,255,.25)}
+    @keyframes floatUp{to{transform:translateY(-120vh) translateX(var(--drift))}}
+
+    .cta{
+      display:inline-flex; gap:10px; align-items:center; justify-content:center;
+      padding:14px 20px; border-radius:16px; border:1px solid rgba(255,255,255,.15);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      backdrop-filter: blur(6px);
+      color:white; text-decoration:none; font-weight:600; cursor:pointer;
+      transition: transform .15s ease, box-shadow .2s ease;
+      box-shadow: 0 8px 30px rgba(0,0,0,.25);
+    }
+    .cta:hover{transform:translateY(-2px); box-shadow:0 12px 34px rgba(0,0,0,.34)}
+
+    /* Sections */
+    section{padding:70px 0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.12); border-radius:24px; padding:28px; box-shadow:0 8px 30px rgba(0,0,0,.25)}
+
+    .type{font-size:clamp(18px,2.5vw,22px); line-height:1.75}
+    .type .cursor{display:inline-block; width:2px; background:var(--accent); animation:blink 1s steps(1) infinite; margin-left:2px; height:1em; vertical-align:-2px}
+    @keyframes blink{50%{opacity:0}}
+
+    .grid{display:grid; gap:22px}
+    @media (min-width:840px){.grid-2{grid-template-columns:1.1fr .9fr}}
+
+    .stars{display:flex; flex-wrap:wrap; gap:12px}
+    .star{padding:10px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.15); font-size:14px; color:#d9e1ff; background:rgba(255,255,255,.04); cursor:pointer}
+    .star.revealed{background:linear-gradient(90deg, rgba(255,110,199,.25), rgba(124,246,255,.25)); border-color:rgba(255,255,255,.22)}
+
+    footer{padding:40px 0 70px; text-align:center; color:#aeb8ff; font-size:13px}
+
+    /* Confetti canvas */
+    canvas#confetti{position:fixed; inset:0; pointer-events:none}
+
+    /* Audio button */
+    .audio-btn{position:fixed; bottom:20px; right:20px; z-index:30}
+    .muted{opacity:.7}
+
+    /* Vertical gallery styling */
+    .v-gallery{display:flex;flex-direction:column;gap:40px;margin-top:16px}
+    .v-item{display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center}
+
+    /* FIXED IMAGE SIZE */
+    .v-img{
+      max-width:400px;   /* limit image width */
+      width:100%;
+      border-radius:16px;
+      box-shadow:0 6px 22px rgba(0,0,0,.35);
+      margin:0 auto;
+      display:block;
+    }
+
+    /* BIGGER, CLEARER TEXT */
+    .v-text{
+      font-size:18px;
+      line-height:1.8;
+      color:#dbe0ff;
+      text-align:justify;
+      max-width:700px;
+      margin:0 auto;
+    }
+  </style>
+</head>
+<body> <canvas id="confetti"></canvas> <header> <div class="container"> <h1>Happy Birthday, Shivu ✨</h1> <p class="tag">From Ishan — a small corner of the internet just for you. May this year be softer, brighter, and kinder to your heart. 💖</p> <button id="revealBtn" class="cta">Open Your Birthday Letter</button> <div style="height:24px"></div> <button id="musicBtn" class="cta audio-btn muted">Play Music ♪</button> </div> </header> <!-- Letter + Typewriter --> <section> <div class="container grid grid-2"> <div class="card"> <div class="type" id="typeArea"></div> </div> <div class="card"> <h3 style="margin-top:0">Tiny Things I Love About You</h3> <div class="stars" id="stars"> <button class="star">your “hanji” voice</button> <button class="star">the way you listen</button> <button class="star">your quick little anger</button> <button class="star">how you make me feel chosen</button> <button class="star">your cute texts</button> <button class="star">the clingy side (my favorite)</button> <button class="star">the smile I hear even on calls</button> <button class="star">your courage on hard days</button> </div> <p style="margin-top:16px; color:#aeb8ff; font-size:13px">Tap each bubble ✨</p> </div> </div> </section> <!-- Vertical Gallery --> <section> <div class="container"> <div class="card"> <h3 style="margin:0 0 12px">A little gallery of you 💖</h3> <div class="v-gallery"> <div class="v-item"> <img src="images/shivu1.jpg" alt="Shivu baby" class="v-img">Baby <p class="v-text"> Even as a baby, you were already busy stealing hearts without even knowing it. Those tiny eyes already had the same mischief I see in you today, and that little face could melt anyone in seconds. Honestly, who allowed you to be this cute from the very beginning? You look like the kind of baby strangers would stop just to admire and adore. And somehow, you only grew up to become even more breathtaking. If time travel was real, I’d go back just to pinch those cheeks once—maybe even steal you away so you’d grow up only with me. It’s kind of unfair how you went from angel baby to angel grown-up without skipping a beat. You’re living proof that cuteness doesn’t fade, it just evolves into beauty. Whether baby Shivu or now Shivu, you’ve always been, and will always be, my favorite view.🍼</p> </div> <div class="v-item"> <img src="images/shivu2.jpg" alt="Shivu sticking tongue out" class="v-img"> <p class="v-text">This picture is pure chaos and pure perfection, and honestly, it makes me laugh every single time. You stick your tongue out like you’re trying to be silly, but it somehow just makes you even cuter. It’s not fair how you can look so effortlessly adorable even when you’re messing around. That little playful side of yours is one of the million reasons I’m obsessed with you. You look like trouble in the best possible way, the kind of trouble I’d sign up for again and again. It’s cheeky, it’s flirty, and it’s so you—making even goofy moments look like art. If charm had a face, it’d be this photo of you sticking your tongue out. I don’t know if you were teasing me through the lens, but it sure feels like it. You make mischief look irresistible, and honestly? I’d let you win every single time.</p> </div> <div class="v-item"> <img src="images/shivu3.jpg" alt="Shivu sunlight" class="v-img"> <p class="v-text">This one feels different—like the light itself chose you to shine on. The way the sunlight falls on your face makes you look unreal, almost like you’re glowing from the inside out. It’s the kind of picture that makes me stop and stare, because how do you look like both peace and chaos at the same time? You’re soft, radiant, and breathtaking, and I swear even the sun looks jealous. It feels like the world pauses for a second here, just to admire you. There’s something gentle in your eyes, but also something that pulls me in like gravity. I don’t know how you do it—how you make just standing in the light feel magical. You don’t need filters, you don’t need edits—the universe is already working overtime to make you perfect. And still, none of it compares to how I see you. In this light, in every light, you’re my favorite kind of glow. </p> </div> <div class="v-item"> <img src="images/shivu4.jpg" alt="Shivu lots of sunlight" class="v-img"> <p class="v-text">This picture feels like you are the sun. The way the light wraps around you doesn’t just brighten the photo—it brightens me too. You look like warmth, like comfort, like the summer mornings I never want to end. There’s a fire in you here, a spark that makes everything else fade into the background. You look untouchable yet inviting at the same time, like I should worship you but also hold you close. The sunlight seems to bend just to highlight you, like even nature knows who the main character is. Every inch of you in this photo radiates life, laughter, and that energy I can’t get enough of. It’s crazy how a single frame can hold so much brightness. You’re not just lit by the sun—you outshine it. And standing here, I’d happily burn just to stay in your warmth.</p> </div> <div class="v-item"> <img src="images/shivu5.jpg" alt="Shivu with glasses" class="v-img"> <p class="v-text">There’s just something about you in glasses that makes me weak in the knees. You look smart, confident, and so effortlessly hot—like you know exactly the effect you’re having. It’s unfair how you can pull off the studious look while still looking like trouble I’d gladly sign up for. You’re giving main character energy, the type that makes everyone else fade into the background. I’d be lying if I said I wasn’t imagining you catching me staring through those frames. There’s a sharpness in your eyes here, like you could read me better than any book. And the truth is, you already do. You in glasses is like a cheat code—beauty with brains, elegance with attitude, sweetness with fire. Honestly, I don’t know whether I want to kiss you or ask you to tutor me. Probably both.</p> </div> </div> </div> </div> </section> <!-- Closing --> <section> <div class="container"> <div class="card center" style="flex-direction:column; text-align:center"> <h2 style="margin:0 0 10px">Here’s to your year, Shivu 🥂</h2> <p style="max-width:720px; color:#cbd4ff">I don’t know everything the future holds, but I know this: you’re stronger than you think, softer than you let on, and more loved than you believe. Keep choosing yourself. I’m cheering for you — always. — Ishan</p> <div style="height:16px"></div> <button id="confettiBtn" class="cta">✨ Celebrate</button> </div> </div> </section> <footer>Made with love and a little JavaScript. © Ishan</footer> <!-- Music --> <audio id="bgm" loop> <source src="" type="audio/mpeg"> </audio> <script> // ===== Balloons ===== const header = document.querySelector('header'); const colors = ['#ff6ec7','#7cf6ff','#ffd166','#8ef6a0','#c79cff']; for(let i=0;i<14;i++){ const b=document.createElement('div'); b.className='balloon'; const c=colors[i%colors.length]; b.style.background=c; b.style.left = Math.random()*100+'%'; b.style.animationDuration = 8+Math.random()*10+'s'; b.style.setProperty('--drift', (Math.random()*60-30)+'px'); header.appendChild(b); } // ===== Typewriter letter ===== const letter = Shivu,\n\nHappy Birthday. I wanted to make you something small but ours. So here it is — a tiny universe where the only job is to remind you that you matter. On the days you feel heavy, borrow my faith: you are capable, gentle, and worthy of the soft life you dream of.\n\nThank you for being you. — Ishan; const typeArea = document.getElementById('typeArea'); const cursor = '<span class="cursor"></span>'; let idx=0, typing=false; function typeIt(){ if(idx>letter.length){ return; } const ch = letter[idx] === '\n' ? '<br>' : letter[idx]; typeArea.innerHTML += ch || ''; idx++; if(idx<=letter.length){ setTimeout(typeIt, 18 + Math.random()*25); } else { typeArea.innerHTML += ' '+cursor; } } document.getElementById('revealBtn').addEventListener('click', ()=>{ if(typing) return; typing=true; typeArea.innerHTML=''; idx=0; typeIt(); burstConfetti(180); }); // ===== Stars reveal ===== document.querySelectorAll('.star').forEach(s=>{ s.addEventListener('click', ()=>{ s.classList.add('revealed'); if(!s.textContent.startsWith('✨')) s.textContent = '✨ '+s.textContent; }) }) // ===== Simple confetti ===== const canvas = document.getElementById('confetti'); const ctx = canvas.getContext('2d'); let W,H, pieces=[]; function resize(){W=canvas.width=innerWidth; H=canvas.height=innerHeight} addEventListener('resize', resize); resize(); function Piece(){ this.x=Math.random()*W; this.y=Math.random()*-H; this.size=5+Math.random()*6; this.spd=1+Math.random()*3; this.rot=Math.random()*6.28; this.col=colors[Math|Math.random()*colors.length]; } function burstConfetti(n=120){ for(let i=0;i<n;i++){ const p=new Piece(); p.y=Math.random()*H*0.4+H*0.1; p.x=Math.random()*W; p.spd=2+Math.random()*4; pieces.push(p) } setTimeout(()=>{ pieces=[] }, 2200) } document.getElementById('confettiBtn').addEventListener('click', ()=> burstConfetti(220)); (function loop(){ ctx.clearRect(0,0,W,H); pieces.forEach(p=>{ p.y+=p.spd; p.rot+=.03; p.x+=Math.sin(p.rot)*.6; ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot); ctx.fillStyle=p.col; ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size); ctx.restore(); }) requestAnimationFrame(loop); })(); // ===== Music toggle ===== const audio = document.getElementById('bgm'); const musicBtn = document.getElementById('musicBtn'); let playing=false; musicBtn.addEventListener('click', async ()=>{ try{ if(!playing){ await audio.play(); musicBtn.textContent='Pause Music ❚❚'; musicBtn.classList.remove('muted'); } else{ audio.pause(); musicBtn.textContent='Play Music ♪'; musicBtn.classList.add('muted'); } playing=!playing; }catch(e){ alert('Add a valid audio source first (mp3).'); } }) </script> </body> </html>

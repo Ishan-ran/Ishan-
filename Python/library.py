@@ -112,6 +112,7 @@ class LibraryApp:
                 add_win.destroy()
             else:
                 messagebox.showerror("Error", "All fields are required")
+        button_style = {"bg": "light blue", "fg": "black", "activebackground": "blue", "width": 15, "height": 2}
 
         tk.Button(add_win, text="Add", command=add_book, **button_style).grid(row=3, column=1)
 
@@ -134,7 +135,7 @@ class LibraryApp:
                     remove_win.destroy()
                     return
             messagebox.showerror("Error", "Book not found")
-
+        button_style = {"bg": "light blue", "fg": "black", "activebackground": "blue", "width": 15, "height": 2}
         tk.Button(remove_win, text="Remove", command=remove_book, **button_style).grid(row=1, column=1)
 
     # Update Book List (UI Refresh)
@@ -191,7 +192,7 @@ class LibraryApp:
             days = int(days_entry.get())
             fine = days * 5  # Assume fine is 5 units per day
             messagebox.showinfo("Fine", f"The fine is: {fine}")
-
+        button_style = {"bg": "light blue", "fg": "black", "activebackground": "blue", "width": 15, "height": 2}
         tk.Button(fine_win, text="Calculate", command=calculate, **button_style).grid(row=1, column=1)
 
 # Create the main window
