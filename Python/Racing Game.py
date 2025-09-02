@@ -56,12 +56,3 @@ for i in range(20):
              print("The number of steps will be: ")
              print(20*die_outcome)
              player_two.fd(20*die_outcome)
-
-
-
-
-
-
-
-
-             
